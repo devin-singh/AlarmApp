@@ -19,7 +19,6 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var alarmSwitch: UISwitch!
     
     var alarm: Alarm? {
-        
         didSet {
             updateViews()
         }

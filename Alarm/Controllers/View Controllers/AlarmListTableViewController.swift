@@ -13,6 +13,7 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        AlarmController.sharedInstance.loadFromPersistentStorage()
     }
     
     func switchCellSwitchValueChanged(cell: SwitchTableViewCell) {
@@ -30,7 +31,6 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
         return AlarmController.sharedInstance.alarms.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmCell", for: indexPath) as? SwitchTableViewCell else {return UITableViewCell()}
 
@@ -40,10 +40,6 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
 
         return cell
     }
-    
-
-
-
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -64,6 +60,4 @@ class AlarmListTableViewController: UITableViewController, SwitchTableViewCellDe
             destinationVC.alarm = alarmPicked
         }
     }
-    
-
 }
